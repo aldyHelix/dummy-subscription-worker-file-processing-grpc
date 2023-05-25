@@ -1,0 +1,89 @@
+syntax="proto3";
+
+package copyfto;
+option go_package = "copyfto";
+
+// swagger:model Empty
+message Empty{}
+// swagger:model GenericReponse
+message GenericReponse{
+    bool success = 1;
+    string request_id = 2;
+}
+
+// swagger:model DummyOrderInfo
+message DummyOrderInfo {
+    // ID 
+    string id = 1;
+    // nama_file
+    string file_name = 2;
+    // nomor_file
+    int64 file_number = 3;
+    // ukuran_file_normal
+    int64 normal_file_size = 4;
+    // ukuran_file_zip
+    int64 zip_file_size = 5;
+    // jumlah_transaksi
+    int64 number_of_transaction = 6;
+    // tanggal_peroleh
+    int64 obtained_date = 7;
+    // status_file
+    string file_status = 8;
+}
+
+message DummyOrderInfoHistory {
+    //ID
+    string id = 1;
+    // dummy_order_detail
+    string dummy_order_detail = 2;
+    // status_id
+    string status_id = 3;
+    // status_label
+    string status_label = 4;
+    // status_proses
+    string status_process = 5;
+    // deskripsi_status
+    string status_description = 6;
+}
+
+// swagger:model RequestInfo
+message RequestInfo {
+    string request_id = 1;
+    string username = 2;
+    string resource = 3;
+    string action = 4;
+    string ip_address = 5;
+    string endpoint = 6;
+}
+service Copyfto {
+    // swagger:operation POST /api/template/Template/GetParticipantById CopyFTO CopyFileDummyOrder
+    // GetParticipantById
+    // ---
+    // responses:
+    //   "200":
+	//     description: Success message. Value is 1 if its active, otherwise no active account registered.
+	//     in: body
+	//     schema:
+	//       "$ref": "#/definitions/Empty"
+	//   "500":
+	//     description: error message
+	//     examples:
+    //       error-message: missing-participant-id
+	//     schema:
+	//       type: object
+    //       properties:
+    //          error-message:
+    //              type: string
+    //          timestamp:
+    //              type: integer
+    //          bus-id:
+    //              type: string
+    //
+    // parameters:
+    // - in: body
+	//   name: Request Body
+	//   schema:
+	//     "$ref": "#/definitions/Id"
+	//   required: true
+    rpc CopyFileDummyOrder(Empty) returns (GenericReponse) {}
+}

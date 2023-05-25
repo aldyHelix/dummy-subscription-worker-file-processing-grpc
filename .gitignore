@@ -1,0 +1,5 @@
+deployments/docker/build/api
+deployments/docker/build/grpc
+*.out
+.idea
+*.log
