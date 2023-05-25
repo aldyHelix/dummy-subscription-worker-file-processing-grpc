@@ -58,8 +58,8 @@ func SetupAPI() (*http.ServeMux, *CopyftoAPI) {
 		if os.Getenv("UNIT_TEST") == "1" {
 			return
 		}
-		if os.Getenv("PRH_CFTO_DISABLE_SCHEDULER") == "true" {
-			Log(context.Background(), zerolog.InfoLevel, &RequestInfo{}, "PRH_CFTO_DISABLE_SCHEDULER is set to true, disabling scheduler", "OK", "")
+		if os.Getenv("DUMMY_CFTO_DISABLE_SCHEDULER") == "true" {
+			Log(context.Background(), zerolog.InfoLevel, &RequestInfo{}, "DUMMY_CFTO_DISABLE_SCHEDULER is set to true, disabling scheduler", "OK", "")
 			return
 		}
 		for {

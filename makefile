@@ -44,7 +44,7 @@ test: clean-db
 	ls -lR ./migrations
 	echo "prepare test"
 	gcloud auth activate-service-account --key-file ${GCS_CREDENTIAL_PATH}
-	gsutil cp ORD-TA-NW-UP-20210323000000-0001.zip gs://dummy-bucket-upload-jakarta/dummy/${FTO_LOCAL_DIRECTORY}/ORD-TA-NW-UP-20210323000000-0001.zip
+	gsutil cp 0001.zip gs://dummy-bucket/dummy/${FTO_LOCAL_DIRECTORY}/0001.zip
 	MIGRATION_PATH=./migrations/test LOCAL_TEST=0 go test -test.parallel 4 -cover -coverprofile=coverage.out
 	go tool cover -func=coverage.out
 

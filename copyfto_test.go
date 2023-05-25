@@ -26,6 +26,6 @@ func TestCopyFileDummyOrder(t *testing.T) {
 // func TestGetFileFTO(t *testing.T) {
 // 	api := createCopyfto()
 
-// 	_, err := api.GetFileFTO("ORD-TA-NW-UP-20210225110110-0001.zip")
+// 	_, err := api.GetFileFTO("0001.zip")
 // 	assert.Equal(t, nil, err)
 // }

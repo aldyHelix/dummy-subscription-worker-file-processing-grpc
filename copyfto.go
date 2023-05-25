@@ -42,9 +42,9 @@ const (
 	UNMATCHED = "18a16fd5-93d2-485d-af5d-aa489d93b16d"
 	INVALID   = "e93f5414-af74-435a-8025-e123c3905f20"
 
-	SUBS = "26a3ef20-86c3-4ad6-9a1d-ab8acd2b5998"
-	REDM = "b637ab18-247b-487d-898b-d97fff1691ae"
-	SWTC = "590e60a5-1051-4fb3-9061-18dfc579d137"
+	SUBS  = "26a3ef20-86c3-4ad6-9a1d-ab8acd2b5998"
+	BLUEM = "b637ab18-247b-487d-898b-d97fff1691ae"
+	SWTC  = "590e60a5-1051-4fb3-9061-18dfc579d137"
 
 	ERR_DB_QUERY_MSG = "Err DB Query"
 	ERR_DB_SCAN_MSG  = "Err DB Row Scan"
@@ -670,7 +670,7 @@ func (c *CopyftoAPI) MoveFileToDone(logctx context.Context, reqInfo *RequestInfo
 	donePath := os.Getenv("FTO_DONE_DIRECTORY")
 	gcsBucketName := os.Getenv("OBJECT_STORAGE_BUCKET_NAME")
 	if gcsBucketName == "" {
-		gcsBucketName = "gs:://dummy-bucket-upload-jakarta/"
+		gcsBucketName = "gs:://dummy-bucket/"
 	}
 	gcsBucketName = strings.Split(gcsBucketName, "/")[2]
 	client, err := storage.NewClient(ctx, option.WithCredentialsFile(os.Getenv("GCS_CREDENTIAL_PATH")))
@@ -816,7 +816,7 @@ func getInstructionType(refNo string) string {
 	case "2":
 		return SUBS
 	case "3":
-		return REDM
+		return BLUEM
 	case "4":
 		return SWTC
 	default:
@@ -911,10 +911,10 @@ func (c *CopyftoAPI) validateSWTCAmount(firstRecord, secondRecord []string) (des
 	}
 	nettoAmount, err := strconv.ParseFloat(netAmount, 64)
 	if err != nil {
-		description = fmt.Sprintf("kolom Net Transaction Amount transaksi REDM (%v) tidak valid", netAmount)
+		description = fmt.Sprintf("kolom Net Transaction Amount transaksi BLUEM (%v) tidak valid", netAmount)
 	}
 	if nominalAmount != nettoAmount {
-		description = fmt.Sprintf("kolom Net Transaction Amount transaksi REDM (%v) berbeda dengan kolom Amount (Nominal) transaksi SUBS (%v)", netAmount, nominal)
+		description = fmt.Sprintf("kolom Net Transaction Amount transaksi BLUEM (%v) berbeda dengan kolom Amount (Nominal) transaksi SUBS (%v)", netAmount, nominal)
 		return
 	}
 	return
