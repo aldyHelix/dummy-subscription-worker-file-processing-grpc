@@ -65,7 +65,7 @@ quicktest: clean-db
 		-v $(PREFIX)/deployments/docker/build:/build \
 		-v $(PREFIX)/:/src \
 		-v $(PREFIX)/migrations:/migrations \
-		-v `pwd`/certs/dummy.go.id.abc:/dummy.go.id.abc \
+		-v `pwd`/certs/dummy.com.abc:/dummy.com.abc \
 		-v $(PREFIX)/scripts/test.sh:/test.sh \
 		-e UID=$(UID) \
 		${CONTAINER_REPO}/module-builder /test.sh $(TESTARGS)
@@ -103,7 +103,7 @@ run-api: build-api
 		--env-file .env \
 		-v `pwd`/deployments/docker/build/api:/api \
 		-v `pwd`/templates:/templates \
-		-v `pwd`/certs/dummy.go.id.abc:/dummy.go.id.abc \
+		-v `pwd`/certs/dummy.com.abc:/dummy.com.abc \
 		docker.a.cicit.dev/core/simply-test-base /api
 
 migrate:

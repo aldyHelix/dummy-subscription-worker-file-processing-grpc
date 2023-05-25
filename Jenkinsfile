@@ -18,12 +18,12 @@ def credentials_prod    = ""
 
 // ::NOTIFICATION
 def telegram_url        = "" 
-def telegram_chatid     = "-388525705"
+def telegram_chatid     = ""
 def job_success         = "SUCCESS"
 def job_error           = "ERROR"
 
 // ::URL
-def repo_url            = "https://gitlab.dummy.go.id/${repo_name}.git"
+def repo_url            = "https://gitlab.dummy.com/${repo_name}.git"
 def docker_dev          = ""
 def docker_staging      = ""
 def docker_prod         = ""

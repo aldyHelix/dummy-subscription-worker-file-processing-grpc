@@ -791,7 +791,7 @@ func (c *CopyftoAPI) ToldataHealthCheck(ctx context.Context, req *toldata.Empty)
 func getReferenceData(id string, isGroup bool) (*GenericRefDataResponse, error) {
 	apiUrl := os.Getenv("URL_API_DATA_REFERENSI")
 	if os.Getenv("UNIT_TEST") == "1" {
-		apiUrl = "http://dev.dummy.go.id"
+		apiUrl = "http://dev.dummy.com"
 	}
 	path := "/datareferensi/datareferensi/?id=" + id
 	if isGroup {
